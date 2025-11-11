@@ -1,10 +1,13 @@
 // app/lib/api.js - UPDATED with staff assignment endpoints
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'
+ 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
 class ApiClient {
   constructor() {
-    this.baseURL = API_URL
+    // Ensure no trailing slash
+    this.baseURL = API_URL.replace(/\/$/, '');
+    console.log('API Client initialized with baseURL:', this.baseURL);
   }
 
   getHeaders() {
