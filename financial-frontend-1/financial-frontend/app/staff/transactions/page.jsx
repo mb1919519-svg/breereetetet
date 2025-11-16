@@ -148,7 +148,7 @@ export default function StaffTransactionsPage() {
             <CardContent className="p-6">
               <p className="text-sm text-slate-400 mb-1">Commission Earned (Credits Only)</p>
               <p className="text-2xl font-bold text-orange-400">
-                ₹{(totalCommission / 100).toFixed(2)}
+               ₹{Math.abs(totalCommission).toFixed(2)}
               </p>
             </CardContent>
           </Card>
@@ -249,7 +249,7 @@ export default function StaffTransactionsPage() {
                         </td>
                         <td className="py-3 px-4 text-orange-400">
                           {txn.type === "debit" 
-                            ? `₹${(txn.commission / 100).toFixed(2)}`
+                            ? `₹${(txn.commission ).toFixed(2)}`
                             : "-"}
                         </td>
                         <td className="py-3 px-4 text-blue-400 font-semibold">
