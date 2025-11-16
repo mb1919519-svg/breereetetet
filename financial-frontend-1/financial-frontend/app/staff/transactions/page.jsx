@@ -63,16 +63,16 @@ export default function StaffTransactionsPage() {
   };
 
   const totalCredits = transactions.reduce(
-    (sum, t) => (t.type === "credit" ? sum + t.amount : sum),
+    (sum, t) => (t.type === "credit" ? sum - t.amount : sum),
     0
   );
   const totalDebits = transactions.reduce(
-    (sum, t) => (t.type === "debit" ? sum + t.amount : sum),
+    (sum, t) => (t.type === "debit" ? sum - t.amount : sum),
     0
   );
   // Only calculate commission on CREDIT transactions
   const totalCommission = transactions.reduce(
-    (sum, t) => (t.type === "credit" ? sum + t.commission : sum),
+    (sum, t) => (t.type === "debit" ? sum - t.commission : sum),
     0
   );
 
@@ -236,7 +236,7 @@ export default function StaffTransactionsPage() {
                         <td className="py-3 px-4">
                           <span
                             className={`px-2 py-1 rounded text-xs font-semibold ${
-                              txn.type === "credit"
+                              txn.type === "debit"
                                 ? "bg-green-900 text-green-200"
                                 : "bg-red-900 text-red-200"
                             }`}
@@ -248,7 +248,7 @@ export default function StaffTransactionsPage() {
                           ₹{txn.amount.toFixed(2)}
                         </td>
                         <td className="py-3 px-4 text-orange-400">
-                          {txn.type === "credit" 
+                          {txn.type === "debit" 
                             ? `₹${(txn.commission / 100).toFixed(2)}`
                             : "-"}
                         </td>
