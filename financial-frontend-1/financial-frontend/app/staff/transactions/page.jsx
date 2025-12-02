@@ -63,16 +63,16 @@ export default function StaffTransactionsPage() {
   };
 
   const totalCredits = transactions.reduce(
-    (sum, t) => (t.type === "credit" ? sum - t.amount : sum),
+    (sum, t) => (t.type === "credit" ? sum + t.amount : sum),
     0
   );
   const totalDebits = transactions.reduce(
-    (sum, t) => (t.type === "debit" ? sum - t.amount : sum),
+    (sum, t) => (t.type === "debit" ? sum + t.amount : sum),
     0
   );
   // Only calculate commission on CREDIT transactions
   const totalCommission = transactions.reduce(
-    (sum, t) => (t.type === "debit" ? sum - t.commission : sum),
+    (sum, t) => (t.type === "debit" ? sum + t.commission : sum),
     0
   );
 
@@ -293,3 +293,4 @@ export default function StaffTransactionsPage() {
     </>
   );
 }
+
