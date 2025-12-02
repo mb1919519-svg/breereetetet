@@ -197,8 +197,8 @@ export default function TransactionModal({ isOpen, onClose, role }) {
     } else {
       return {
         commission,
-        finalAmount: amount - commission,
-        display: `You will pay: ₹${(amount - commission).toFixed(2)} (₹${amount.toFixed(2)} -₹${commission.toFixed(2)} commission)`
+     finalAmount: amount + commission,
+        display: `You will pay: ₹${(amount + commission).toFixed(2)} (₹${amount.toFixed(2)} + ₹${commission.toFixed(2)} commission)`
       }
     }
   }
@@ -371,4 +371,5 @@ export default function TransactionModal({ isOpen, onClose, role }) {
     </div>
   )
 }
+
 
